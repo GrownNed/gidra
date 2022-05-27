@@ -1,0 +1,3 @@
+"""
+Genshin Impact Proxy
+"""
