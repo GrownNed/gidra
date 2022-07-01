@@ -1,0 +1,3 @@
+[submodule "ec2b"]
+	path = ec2b
+	url = https://github.com/GrownNed/ec2b.py

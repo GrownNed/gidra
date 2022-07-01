@@ -8,6 +8,8 @@ authors = ["Mero"]
 python = "^3.10"
 betterproto = "^2.0.0b4"
 loguru = "^0.6.0"
+bottle = "^0.12.21"
+ec2b = {git = "https://github.com/GrownNed/ec2b.py"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
