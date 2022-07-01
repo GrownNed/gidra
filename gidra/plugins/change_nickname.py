@@ -4,8 +4,12 @@ from gidra.proxy.cmdids import CmdID
 
 router = HandlerRouter()
 
-# Не работает на себе, потому что никнейм передаётся ещё где то, но работает на всех остальных
 @router(CmdID.GetPlayerSocialDetailRsp, PacketDirection.Server)
-def change_nickname(proxy: GenshinProxy, msg: proto.GetPlayerSocialDetailRsp):
+def change_nickname_social(proxy: GenshinProxy, msg: proto.GetPlayerSocialDetailRsp):
     msg.detail_data.nickname = f"<color=red>{msg.detail_data.nickname}</color>"
+    proxy.send(msg, PacketDirection.Client)
+
+@router(CmdID.PlayerDataNotify, PacketDirection.Server)
+def change_nickname_data(proxy: GenshinProxy, msg: proto.PlayerDataNotify):
+    msg.nick_name = f"<color=red>{msg.nick_name}</color>"
     proxy.send(msg, PacketDirection.Client)

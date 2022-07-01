@@ -9,7 +9,6 @@ import ec2b, base64
 
 @route('/query_cur_region')
 def handle_query_cur():
-
     # Trick to bypass system proxy, this way we don't need to hardcode ec2b key
     session = requests.Session()
     session.trust_env = False
@@ -26,10 +25,9 @@ def handle_query_cur():
 
     return base64.b64encode(bytes(proto)).decode()
 
-def main():
-    global proxy
-    proxy = GenshinProxy(('127.0.0.1', 8888), ('47.245.143.151', 22102))
+proxy = GenshinProxy(('127.0.0.1', 8888), ('47.245.143.151', 22102))
 
+def main():
     proxy.add(change_account.router)
     proxy.add(change_nickname.router)
     proxy.add(windseed_blocker.router)
